@@ -34,10 +34,9 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
-      - run: |
-          npm install
-          npm test
-          npm build
+      - run: npm install
+      - run: npm test
+      - run: npm build
       - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -60,6 +59,5 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build
-      - run: |
-          npm install -g netlify-cli
-          netlify deploy --dir=build --prod
+      - run: npm install -g netlify-cli
+      - run: netlify deploy --dir=build --prod
