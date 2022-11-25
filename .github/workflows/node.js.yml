@@ -65,7 +65,7 @@ jobs:
         run: npm install -g netlify-cli
 
       - name: Attatch
-        run: netlify deploy --dir=build --prod
         env:
           NETLIFY_AUTH_TOKEN: _Ew2-Msnv91fJshNg8yGZ-8uewWM95A8C5KAD3t5iLw
-          NETLIFY_SITE_ID: d8a74c84-b9fb-44eb-bd3c-86a0d122a506
+          NETLIFY_SITE_ID: 0ac98577-98bb-4112-8cce-07db033bbd20
+        run: netlify deploy --dir=build --prod
