@@ -43,3 +43,23 @@ jobs:
         with:
           name: build
           path: build/
+
+  deploy-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Get Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+      - run: |
+          npm install -g netlify-cli
+          netlify deploy --dir=build --prod
