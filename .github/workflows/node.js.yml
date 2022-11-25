@@ -36,12 +36,6 @@ jobs:
           npm test
           npm run build
 
-      - name: Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: ./build/
-
   deploy-app:
     runs-on: ubuntu-latest
     needs: build-app
@@ -56,13 +50,10 @@ jobs:
           node-version: 18
           cache: "npm"
 
-      - name: Get Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-
       - name: Deployment
-        run: npm install -g netlify-cli
+        run: |
+          npm install -g netlify-cli
+          npm run build
 
       - name: Attatch
         env:
